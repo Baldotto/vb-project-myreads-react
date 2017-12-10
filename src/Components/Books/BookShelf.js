@@ -6,12 +6,13 @@ class BookSelf extends Component{
 
     static propTypes = {
         title : PropTypes.string.isRequired,
-        booksWant: PropTypes.array.isRequired
+        books: PropTypes.array
+        
       }
 
     render(){
 
-       const { booksWant } = this.props
+       const { books } = this.props
 
 
        return (
@@ -19,7 +20,7 @@ class BookSelf extends Component{
           <h2 className="bookshelf-title">{this.props.title}</h2>
             <div className="bookshelf-books">
               
-                 <Book books={booksWant} />
+                 <Book books={books}  />
               
             </div>
         </div>
