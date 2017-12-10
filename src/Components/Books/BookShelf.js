@@ -4,11 +4,28 @@ import PropTypes from 'prop-types'
 
 class BookSelf extends Component{
 
+
+
+
+
     static propTypes = {
         title : PropTypes.string.isRequired,
-        books: PropTypes.array
-        
+        books: PropTypes.array,        
       }
+
+      state = {
+
+        bookShelfs : [
+          
+                    { "title": 'Currently reading', "type": 'currently' },
+                    { "title": 'Want to Read', "type": 'want' },
+                    { "title": 'Read', "type": 'read' }
+          
+                  ]
+
+      }
+
+      
 
     render(){
 
@@ -16,13 +33,18 @@ class BookSelf extends Component{
 
 
        return (
-        <div className="bookshelf">
-          <h2 className="bookshelf-title">{this.props.title}</h2>
-            <div className="bookshelf-books">
-              
-                 <Book books={books}  />
-              
-            </div>
+
+        <div>
+        {this.state.bookShelfs.map((bookShelf)=> (
+          <div className="bookshelf">
+            <h2 className="bookshelf-title">{bookShelf.title}</h2>
+              <div className="bookshelf-books">
+
+                  <Book books={books.filter((book)=> book.bookShelf === bookShelf.type)} onRemoveBook={this.props.onRemoveBook} />
+                
+              </div>
+          </div>
+          ))}  
         </div>
        )
     }
