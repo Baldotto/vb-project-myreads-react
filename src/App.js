@@ -63,8 +63,12 @@ class BooksApp extends Component {
   }
 
   changeBookShelf = (book, value) => {
-    book.bookShelf = value;
-    this.setState(book)
+    let { books } = this.state
+    books = books.filter(b => b.id !== book.id).concat({
+      ...book,
+      bookShelf : value
+    })
+    this.setState({books})
   };
 
   render() {
