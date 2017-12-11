@@ -56,11 +56,16 @@ class BooksApp extends Component {
     showSearchPage: false
   }
 
-  removeBook =  (book) => {
+  removeBook =  (book, target) => {
     this.setState((state) => ({
-      booksCurrently : state.booksCurrently.filter((b)=>b.id !== book.id) 
+      books : state.books.filter((b)=>b.id !== book.id) 
     }))
   }
+
+  changeBookShelf = (book, value) => {
+    book.bookShelf = value;
+    this.setState(book)
+  };
 
   render() {
     return (
@@ -95,10 +100,10 @@ class BooksApp extends Component {
               
                 <BookSelf 
                    books={this.state.books} 
-                   title="Currently Reading" 
-                   onRemoveBook={this.removeBook}
-                />             
-              
+                   OnChangeBookShelf={this.changeBookShelf}
+                />    
+
+                                         
             </div>
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
