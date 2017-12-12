@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-//import { Route } from 'react-router-dom'
-// import * as BooksAPI from './BooksAPI'
 import BookSelf from './Components/Books/BookShelf'
-import SearchBooks from './Components/Books/SearchBooks'
+import SearchBooks from './Components/Search/SearchBooks'
 import { Link } from 'react-router-dom'
 import { Route } from 'react-router-dom'
 import './App.css'
@@ -34,20 +32,24 @@ componentDidMount(){
       shelf : value
       
     })
-    //BooksAPI.update(value,book)
-    //BooksAPI.remove(book)
     
-
     BooksAPI.update(book,value)
-
     this.setState({books})
-
-    //book.bookShelf = value
-    //BooksAPI.create(book)
-    
-    
     
   };
+
+  handleSearchTextChange = (searchText) => {
+    this.setState({ booksLoaded: false })
+    
+    searchText = searchText || ' '
+    
+    BooksAPI.search(searchText, 10).then(searchResults =>
+      this.setState({ 
+        searchResults: searchResults.error ? [] : searchResults,
+        booksLoaded: true
+      })
+    )
+  }
 
   render() {
     return (
@@ -73,7 +75,11 @@ componentDidMount(){
           </div>
         )} />
 
-        <Route path='/Search' component={SearchBooks} />
+      <Route exact path='/Search' render={() => (
+          <SearchBooks/>
+        )} />
+
+        
       </div>
 
       

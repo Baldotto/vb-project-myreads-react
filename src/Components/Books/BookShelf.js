@@ -13,9 +13,9 @@ class BookSelf extends Component{
 
         bookShelfs : [
           
-          { "title": 'Currently reading', "type": 'currentlyReading' },
-          { "title": 'Want to Read', "type": 'wantToRead' },
-          { "title": 'Read', "type": 'read' }
+          { title: 'Currently reading', type: 'currentlyReading' },
+          { title: 'Want to Read', type: 'wantToRead' },
+          { title: 'Read', type: 'read' }
           
         
         ]
