@@ -13,8 +13,8 @@ class BookSelf extends Component{
 
         bookShelfs : [
           
-          { "title": 'Currently reading', "type": 'currently' },
-          { "title": 'Want to Read', "type": 'want' },
+          { "title": 'Currently reading', "type": 'currentlyReading' },
+          { "title": 'Want to Read', "type": 'wantToRead' },
           { "title": 'Read', "type": 'read' }
           
         
@@ -37,7 +37,7 @@ class BookSelf extends Component{
             <h2 className="bookshelf-title">{bookShelf.title}</h2>
               <div className="bookshelf-books">
 
-                  <Book books={books.filter((book)=> book.bookShelf === bookShelf.type)} OnChangeBookShelf={this.props.OnChangeBookShelf} />
+                  <Book books={books.filter((book)=> book.shelf === bookShelf.type)} OnChangeBookShelf={this.props.OnChangeBookShelf} />
                 
               </div>
           </div>

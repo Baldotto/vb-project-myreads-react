@@ -31,14 +31,19 @@ componentDidMount(){
     let { books } = this.state
     books = books.filter(b => b.id !== book.id).concat({
       ...book,
-      bookShelf : value
+      shelf : value
       
     })
+    //BooksAPI.update(value,book)
+    //BooksAPI.remove(book)
     
-    BooksAPI.remove(book)
+
+    BooksAPI.update(book,value)
+
     this.setState({books})
-    book.bookShelf = value
-    BooksAPI.create(book)
+
+    //book.bookShelf = value
+    //BooksAPI.create(book)
     
     
     
