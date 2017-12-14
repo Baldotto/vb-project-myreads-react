@@ -8,16 +8,17 @@ import * as BooksAPI from './External/BooksAPI'
 
 
 class BooksApp extends Component {
+
   state = {
     
      books : []
   }
 
-componentDidMount(){
-  BooksAPI.getAll().then((books)=>{
-    this.setState({books})
-  })
-}
+  componentDidMount(){
+    BooksAPI.getAll().then((books)=>{
+      this.setState({books})
+    })
+  }
 
   removeBook =  (book, target) => {
     this.setState((state) => ({
@@ -45,35 +46,27 @@ componentDidMount(){
     
     BooksAPI.search(searchText, 10).then(searchResults =>
       this.setState({ 
-        searchResults: searchResults.error ? [] : searchResults,
-        booksLoaded: true
+        searchResults: searchResults.error ? [] : searchResults
       })
     )
   }
 
   render() {
     return (
-
       <div className="app">
-        <Route exact path='/' render={() => (
-                     
+        <Route exact path='/' render={() => (                     
          <ListBooks
             books={this.state.books} 
             OnChangeBookShelf={this.changeBookShelf}
-         />                                         
-          
+         />                                                  
         )} />
-
       <Route exact path='/Search' render={() => (
           <SearchBooks/>
-        )} />
-
-        
-      </div>
-
-      
+        )} />        
+      </div>     
     )
   }
+
 }
 
 export default BooksApp

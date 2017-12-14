@@ -25,6 +25,8 @@ class SearchBooks extends Component{
 
     render(){
 
+     
+
         return (
           <div className="search-books">
             <div className="search-books-bar">
@@ -48,8 +50,13 @@ class SearchBooks extends Component{
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
-              <Book books={this.state.searchResults} />
+              <ol className="books-grid">
+                      {this.state.searchResults.map((book)=> (
+                        <li key={book.id}>  
+                        <Book book={book} />
+                      </li>
+                      ))}
+              </ol>              
             </div>
           </div>
         )

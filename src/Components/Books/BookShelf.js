@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Book from './Book'
+import BookShelfBooks from './BookShelfBooks'
 import PropTypes from 'prop-types'
 
 class BookSelf extends Component{
@@ -28,19 +28,16 @@ class BookSelf extends Component{
     render(){
 
        const { books } = this.props
-
+       
 
        return (
 
         <div>
-        {this.state.bookShelfs.map((bookShelf)=> (
+        {this.state.bookShelfs.map((bookShelf)=> (           
+
           <div className="bookshelf" key={bookShelf.type}>
             <h2 className="bookshelf-title">{bookShelf.title}</h2>
-              <div className="bookshelf-books">
-
-                  <Book books={books.filter((book)=> book.shelf === bookShelf.type)} OnChangeBookShelf={this.props.OnChangeBookShelf} />
-                
-              </div>
+              <BookShelfBooks OnChangeBookShelf={this.props.OnChangeBookShelf} books={books.filter((book)=> book.shelf === bookShelf.type)} />
           </div>
           ))}  
         </div>
