@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ListBooks from './Components/Books/ListBooks'
 import SearchBooks from './Components/Books/SearchBooks'
+import { Link } from 'react-router-dom'
 import { Route } from 'react-router-dom'
 import './App.css'
 import * as BooksAPI from './External/BooksAPI'
@@ -30,7 +31,7 @@ class BooksApp extends Component {
     BooksAPI.update(book,value)
     this.setState({books})
     
-  };
+  }
 
   render() {
     return (
@@ -42,12 +43,11 @@ class BooksApp extends Component {
          />                                                  
         )} />
       <Route exact path='/Search' render={() => (
-          <SearchBooks OnChangeBookShelf={this.changeBookShelf}/>
+          <SearchBooks />
         )} />        
       </div>     
     )
   }
-
 }
 
 export default BooksApp

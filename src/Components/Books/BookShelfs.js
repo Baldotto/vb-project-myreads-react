@@ -31,7 +31,6 @@ class BookSelfs extends Component{
        
 
        return (
-
         <div>
         {this.state.bookShelfs.map((bookShelf)=> (           
           <div className="bookshelf" key={bookShelf.type}>
