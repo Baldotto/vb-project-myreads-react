@@ -11,20 +11,15 @@ class ListBooksContent extends Component{
 
 
     render(){
-
-        return(
-        
+        return(       
           <div className="list-books-content">
             <BookSelf 
                  books={this.props.books} 
                  OnChangeBookShelf={this.props.OnChangeBookShelf}
             />    
-          </div>
-        
+          </div>       
         )
-
     }
-
 }
 
 export default ListBooksContent
