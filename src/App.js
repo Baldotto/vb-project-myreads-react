@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import BookSelf from './Components/Books/BookShelf'
+import ListBooks from './Components/Books/ListBooks'
 import SearchBooks from './Components/Search/SearchBooks'
 import { Link } from 'react-router-dom'
 import { Route } from 'react-router-dom'
@@ -56,23 +56,12 @@ componentDidMount(){
 
       <div className="app">
         <Route exact path='/' render={() => (
-          <div className="list-books">
-          <div className="list-books-title">
-            <h1>MyReads</h1>
-          </div>
-          <div className="list-books-content">
-            
-              <BookSelf 
-                 books={this.state.books} 
-                 OnChangeBookShelf={this.changeBookShelf}
-              />    
-
-                                       
-          </div>
-          <div className="open-search">
-            <Link to='/search' >Add a book</Link>
-          </div>
-          </div>
+                     
+         <ListBooks
+            books={this.state.books} 
+            OnChangeBookShelf={this.changeBookShelf}
+         />                                         
+          
         )} />
 
       <Route exact path='/Search' render={() => (
