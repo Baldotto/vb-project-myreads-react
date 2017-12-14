@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ListBooks from './Components/Books/ListBooks'
-import SearchBooks from './Components/Search/SearchBooks'
-import { Link } from 'react-router-dom'
+import SearchBooks from './Components/Books/SearchBooks'
 import { Route } from 'react-router-dom'
 import './App.css'
 import * as BooksAPI from './External/BooksAPI'
@@ -20,12 +19,6 @@ class BooksApp extends Component {
     })
   }
 
-  removeBook =  (book, target) => {
-    this.setState((state) => ({
-      books : state.books.filter((b)=>b.id !== book.id) 
-    }))
-  }
-
   changeBookShelf = (book, value) => {
     let { books } = this.state
     books = books.filter(b => b.id !== book.id).concat({
@@ -38,18 +31,6 @@ class BooksApp extends Component {
     this.setState({books})
     
   };
-
-  handleSearchTextChange = (searchText) => {
-    this.setState({ booksLoaded: false })
-    
-    searchText = searchText || ' '
-    
-    BooksAPI.search(searchText, 10).then(searchResults =>
-      this.setState({ 
-        searchResults: searchResults.error ? [] : searchResults
-      })
-    )
-  }
 
   render() {
     return (
