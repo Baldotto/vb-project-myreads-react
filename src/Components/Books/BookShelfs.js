@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import BookShelfBooks from './BookShelfBooks'
 import PropTypes from 'prop-types'
 
-class BookSelf extends Component{
+class BookSelfs extends Component{
 
 
     static propTypes = {
@@ -34,7 +34,6 @@ class BookSelf extends Component{
 
         <div>
         {this.state.bookShelfs.map((bookShelf)=> (           
-
           <div className="bookshelf" key={bookShelf.type}>
             <h2 className="bookshelf-title">{bookShelf.title}</h2>
               <BookShelfBooks OnChangeBookShelf={this.props.OnChangeBookShelf} books={books.filter((book)=> book.shelf === bookShelf.type)} />
@@ -45,4 +44,4 @@ class BookSelf extends Component{
     }
 }
 
-export default BookSelf
+export default BookSelfs

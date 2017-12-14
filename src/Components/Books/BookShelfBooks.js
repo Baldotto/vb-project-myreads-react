@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Book from './Book'
+import BooksGrid from './BooksGrid'
 
 class BookShelfBooks extends Component{
 
@@ -17,19 +17,10 @@ class BookShelfBooks extends Component{
 
          return(
              <div className="bookshelf-books">
-
-                  <ol className="books-grid" >
-                      {books.map((book)=> (
-                        <li key={book.id}>  
-                        <Book book={book} OnChangeBookShelf={this.props.OnChangeBookShelf} />
-                      </li>
-                      ))}
-                  </ol>
+                 <BooksGrid books={books} OnChangeBookShelf={this.props.OnChangeBookShelf} />                                       
              </div>
          )   
-
     }
-
 }
 
 export default BookShelfBooks

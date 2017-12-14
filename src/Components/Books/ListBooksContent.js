@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import BookSelf from './BookShelf'
+import BookSelfs from './BookShelfs'
 import PropTypes from 'prop-types'
 
 class ListBooksContent extends Component{
@@ -13,7 +13,7 @@ class ListBooksContent extends Component{
     render(){
         return(       
           <div className="list-books-content">
-            <BookSelf 
+            <BookSelfs 
                  books={this.props.books} 
                  OnChangeBookShelf={this.props.OnChangeBookShelf}
             />    
