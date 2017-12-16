@@ -19,7 +19,9 @@ Basta executar os comandos na pasta onde você baixou a aplicação:
 npm install
 npm start
 
-Depois basta executar sua aplicação na porta 3000 conforme imagem abaixo:
+Depois basta executar sua aplicação na porta 3000:
 Pronto! Temos a aplicação funcionando na sua maquina!
+
+Caso queria testar a aplicação sem instalar os componentes em sua maquina, utilize a url http://myreads.azurewebsites.net/
 
 
