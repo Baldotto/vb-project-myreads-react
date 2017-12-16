@@ -22,30 +22,30 @@ export const getAll = () =>
     .then(res => res.json())
     .then(data => data.books)
 
- export const remove = (book) =>
-    fetch(`${api}/books/${book.id}`, { method: 'DELETE', headers })
-      .then(res => res.json())
-      .then(data => data.book)
+export const remove = (book) =>
+  fetch(`${api}/books/${book.id}`, { method: 'DELETE', headers })
+    .then(res => res.json())
+    .then(data => data.book)
 
 export const create = (body) =>
-      fetch(`${api}/books`, {
-        method: 'POST',
-        headers: {
-          ...headers,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      }).then(res => res.json())
+  fetch(`${api}/books`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  }).then(res => res.json())
 
 export const update = (book, shelf) =>
-fetch(`${api}/books/${book.id}`, {
-  method: 'PUT',
-  headers: {
-    ...headers,
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({ shelf })
-}).then(res => res.json())
+  fetch(`${api}/books/${book.id}`, {
+    method: 'PUT',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ shelf })
+  }).then(res => res.json())
 
 export const search = (query, maxResults) =>
   fetch(`${api}/search`, {

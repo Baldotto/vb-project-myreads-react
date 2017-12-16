@@ -3,22 +3,22 @@ import PropTypes from 'prop-types'
 import Book from './Book'
 
 
-class BooksGrid extends Component{
+class BooksGrid extends Component {
 
     static propTypes = {
-      books: PropTypes.array.isRequired,
-      OnChangeBookShelf: PropTypes.func
-  }
+        books: PropTypes.array.isRequired,
+        OnChangeBookShelf: PropTypes.func
+    }
 
-    render(){
-        return(
+    render() {
+        return (
             <ol className="books-grid">
-                      {this.props.books.map((book)=> (
-                        <li key={book.id}>  
+                {this.props.books.map((book) => (
+                    <li key={book.id}>
                         <Book book={book} OnChangeBookShelf={this.props.OnChangeBookShelf} />
-                      </li>
-                      ))}
-              </ol>
+                    </li>
+                ))}
+            </ol>
         )
     }
 }

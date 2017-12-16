@@ -9,19 +9,19 @@ import * as BooksAPI from './External/BooksAPI'
 
 class BooksApp extends Component {
   state = {
-    
-     books : []
+
+    books: []
   }
 
-componentDidMount(){
-  BooksAPI.getAll().then((books)=>{
-    this.setState({books})
-  })
-}
+  componentDidMount() {
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books })
+    })
+  }
 
-  removeBook =  (book, target) => {
+  removeBook = (book, target) => {
     this.setState((state) => ({
-      books : state.books.filter((b)=>b.id !== book.id) 
+      books: state.books.filter((b) => b.id !== book.id)
     }))
   }
 
@@ -29,13 +29,13 @@ componentDidMount(){
     let { books } = this.state
     books = books.filter(b => b.id !== book.id).concat({
       ...book,
-      shelf : value
-      
+      shelf: value
+
     })
-    
-    BooksAPI.update(book,value)
-    this.setState({books})
-    
+
+    BooksAPI.update(book, value)
+    this.setState({ books })
+
   };
 
   render() {
@@ -44,32 +44,25 @@ componentDidMount(){
       <div className="app">
         <Route exact path='/' render={() => (
           <div className="list-books">
-          <div className="list-books-title">
-            <h1>MyReads</h1>
-          </div>
-          <div className="list-books-content">
-            
-              <BookSelfs 
-                 books={this.state.books} 
-                 OnChangeBookShelf={this.changeBookShelf}
-              />    
-
-                                       
-          </div>
-          <div className="open-search">
-            <Link to='/search' >Add a book</Link>
-          </div>
+            <div className="list-books-title">
+              <h1>MyReads</h1>
+            </div>
+            <div className="list-books-content">
+              <BookSelfs
+                books={this.state.books}
+                OnChangeBookShelf={this.changeBookShelf}
+              />
+            </div>
+            <div className="open-search">
+              <Link to='/search' >Add a book</Link>
+            </div>
           </div>
         )} />
-
-      <Route exact path='/Search' render={() => (
-          <SearchBooks OnChangeBookShelf={this.changeBookShelf}/>
+        <Route exact path='/Search' render={() => (
+          <SearchBooks OnChangeBookShelf={this.changeBookShelf} />
         )} />
-
-        
       </div>
 
-      
     )
   }
 }
