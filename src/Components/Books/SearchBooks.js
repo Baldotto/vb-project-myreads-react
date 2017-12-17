@@ -7,8 +7,11 @@ import BooksGrid from '../../Components/Books/BooksGrid'
 
 class SearchBooks extends Component {
 
-  state = {
-    searchResults: []
+  constructor() {
+    super()
+    this.state = {
+      searchResults: []
+    }
   }
 
   handleSearchTextChange = (searchText) => {
@@ -16,19 +19,14 @@ class SearchBooks extends Component {
     searchText = searchText.trim()
 
     if (searchText.length > 0) {
-      BooksAPI.search(searchText, 10).then((searchResults)  =>
+      BooksAPI.search(searchText, 10).then((searchResults) =>
         this.props.myBooks.map((book) => (
           searchResults = searchResults.filter((b) => b.id !== book.id).concat(book),
-          
           this.setState({
             searchResults: searchResults.error ? [] : searchResults
           })))
-          
       )
     }
-
-
-
   }
 
   render() {
