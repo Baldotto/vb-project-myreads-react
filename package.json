@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
     "jest": "^21.2.1",
     "prop-types": "^15.5.8",
     "prototype": "0.0.5",
