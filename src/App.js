@@ -8,10 +8,15 @@ import * as BooksAPI from './External/BooksAPI'
 
 
 class BooksApp extends Component {
-  state = {
 
-    books: []
+  constructor() {
+    super()
+    this.state = {
+      books: []
+    }
   }
+
+
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
@@ -59,7 +64,7 @@ class BooksApp extends Component {
           </div>
         )} />
         <Route exact path='/Search' render={() => (
-          <SearchBooks OnChangeBookShelf={this.changeBookShelf} />
+          <SearchBooks books={this.state.books} OnChangeBookShelf={this.changeBookShelf} />
         )} />
       </div>
 

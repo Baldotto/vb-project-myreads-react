@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-
+import { Debounce } from 'react-throttle'
 import * as BooksAPI from '../../External/BooksAPI'
 import BooksGrid from '../../Components/Books/BooksGrid'
 
@@ -13,13 +13,16 @@ class SearchBooks extends Component {
 
   handleSearchTextChange = (searchText) => {
 
-    searchText = searchText || ' '
+    searchText = searchText.trim()
 
-    BooksAPI.search(searchText, 10).then(searchResults =>
-      this.setState({
-        searchResults: searchResults.error ? [] : searchResults
-      })
-    )
+    if (searchText.length > 0) {
+      BooksAPI.search(searchText, 10).then(searchResults =>
+        this.setState({
+          searchResults: searchResults.error ? [] : searchResults
+        })
+      )
+    }
+
   }
 
   render() {
@@ -28,12 +31,14 @@ class SearchBooks extends Component {
         <div className="search-books-bar">
           <Link className="close-search" to="/" >Close</Link>
           <div className="search-books-input-wrapper">
-            <input
-              type="text"
-              placeholder="Search by title or author"
-              value={this.state.searchText}
-              onChange={(event) => this.handleSearchTextChange(event.target.value)}
-            />
+            <Debounce time="100" handler="onChange">
+              <input
+                type="text"
+                placeholder="Search by title or author"
+                value={this.state.searchText}
+                onChange={(event) => this.handleSearchTextChange(event.target.value)}
+              />
+            </Debounce>
           </div>
         </div>
         <div className="search-books-results">
