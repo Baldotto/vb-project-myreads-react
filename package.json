@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "jest": "^21.2.1",
     "prop-types": "^15.5.8",
     "prototype": "0.0.5",
     "react": "^15.5.4",
@@ -13,7 +14,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject"
   }
 }
